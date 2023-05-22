@@ -37,4 +37,8 @@ public class TaskService {
         taskToUpdate.setDescription(task.getDescription());
         repository.save(taskToUpdate);
     }
+
+    public void deleteTask(Long taskId) {
+        repository.deleteById(taskId);
+    }
 }

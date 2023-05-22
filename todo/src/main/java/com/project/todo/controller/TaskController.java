@@ -28,8 +28,13 @@ public class TaskController {
         service.addTask(task);
     }
 
-    @PutMapping ("{taskId}")
+    @PutMapping ("/{taskId}")
     public void updateTask(@PathVariable Long taskId, @RequestBody Task task) {
         service.updateTask(taskId, task);
+    }
+
+    @DeleteMapping("/{taskId}")
+    public void deleteTask(@PathVariable Long taskId) {
+        service.deleteTask(taskId);
     }
 }
