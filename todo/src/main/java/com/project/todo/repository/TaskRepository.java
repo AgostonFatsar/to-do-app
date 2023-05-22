@@ -1,7 +1,7 @@
 package com.project.todo.repository;
 
+import com.project.todo.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.scheduling.config.Task;
 
 import java.util.List;
 
