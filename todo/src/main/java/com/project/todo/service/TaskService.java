@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -23,5 +24,17 @@ public class TaskService {
 
     public List<Task> getTasks() {
         return repository.findAll();
+    }
+
+    public Task getTaskById(Long id) {
+        Optional<Task> task = repository.findById(id);
+        return task.orElseThrow(TaskNotFoundException::new);
+    }
+
+    public void updateTask(Long id, Task task) {
+        Task taskToUpdate = getTaskById(id);
+        taskToUpdate.setName(task.getName());
+        taskToUpdate.setDescription(task.getDescription());
+        repository.save(taskToUpdate);
     }
 }
