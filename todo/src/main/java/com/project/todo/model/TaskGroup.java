@@ -3,7 +3,7 @@ package com.project.todo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -11,15 +11,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Task {
+public class TaskGroup {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private String description;
-    private LocalDate dateOfCreation;
-    @ManyToOne
-    private TaskGroup group;
-
+    @OneToMany(mappedBy = "group")
+    private Set<Task> tasks;
 }
