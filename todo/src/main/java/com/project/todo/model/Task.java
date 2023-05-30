@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 @Getter
@@ -21,5 +23,8 @@ public class Task {
     private String name;
     private String description;
     private LocalDate dateOfCreation;
+    private LocalDate scheduledTime;
+    private Duration taskLength;
+    private TaskStatus taskStatus;
 
 }
