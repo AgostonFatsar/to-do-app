@@ -24,7 +24,7 @@ public class Task {
     private String description;
     private LocalDate dateOfCreation;
     private LocalDate scheduledTime;
-    private Duration taskLength;
+    private Long taskLengthInMinutes;
     private TaskStatus taskStatus;
 
 }
