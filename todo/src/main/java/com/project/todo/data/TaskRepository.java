@@ -1,4 +1,4 @@
-package com.project.todo.repository;
+package com.project.todo.data;
 
 import com.project.todo.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
