@@ -1,6 +1,6 @@
 package com.project.todo.controller;
 
-import com.project.todo.model.TaskGroup;
+import com.project.todo.model.dto.TaskGroupDTO;
 import com.project.todo.service.TaskGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +19,18 @@ public class TaskGroupController {
     }
 
     @GetMapping
-    public List<TaskGroup> getGroups() {
+    public List<TaskGroupDTO> getGroups() {
         return service.getGroups();
     }
 
     @PostMapping
-    public void addGroup(@RequestBody TaskGroup group) {
-        service.addGroup(group);
+    public void addGroup(@RequestBody TaskGroupDTO groupDTO) {
+        service.addGroup(groupDTO);
     }
 
     @PutMapping("/{groupId}")
-    public void updateGroup(@PathVariable Long groupId, @RequestBody TaskGroup group) {
-        service.updateGroup(groupId, group);
+    public void updateGroup(@PathVariable Long groupId, @RequestBody TaskGroupDTO groupDTO) {
+        service.updateGroup(groupId, groupDTO);
     }
 
     @DeleteMapping("/{groupId}")
