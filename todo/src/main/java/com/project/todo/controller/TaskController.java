@@ -1,6 +1,6 @@
 package com.project.todo.controller;
 
-import com.project.todo.model.Task;
+import com.project.todo.model.dto.TaskDTO;
 import com.project.todo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +19,18 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<Task> getTasks() {
+    public List<TaskDTO> getTasks() {
         return service.getTasks();
     }
 
     @PostMapping
-    public void addTask(@RequestBody Task task) {
-        service.addTask(task);
+    public void addTask(@RequestBody TaskDTO taskDto) {
+        service.addTask(taskDto);
     }
 
     @PutMapping ("/{taskId}")
-    public void updateTask(@PathVariable Long taskId, @RequestBody Task task) {
-        service.updateTask(taskId, task);
+    public void updateTask(@PathVariable Long taskId, @RequestBody TaskDTO taskDTO) {
+        service.updateTask(taskId, taskDTO);
     }
 
     @DeleteMapping("/{taskId}")
