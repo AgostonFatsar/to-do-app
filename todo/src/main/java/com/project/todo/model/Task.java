@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -21,7 +20,7 @@ public class Task {
     private String name;
     private String description;
     @CreationTimestamp
-    private LocalDate dateOfCreation;
+    private Date dateOfCreation;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date scheduledTime;
     private Long taskLengthInMinutes;
