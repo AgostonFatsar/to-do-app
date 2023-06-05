@@ -1,5 +1,6 @@
 package com.project.todo.service;
 
+import com.project.todo.data.UserRepository;
 import com.project.todo.model.TaskGroup;
 import com.project.todo.data.TaskGroupRepository;
 import com.project.todo.model.dto.DtoFactory;
@@ -14,10 +15,12 @@ import java.util.stream.Collectors;
 public class TaskGroupService {
 
     private final TaskGroupRepository groupRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public TaskGroupService(TaskGroupRepository repository) {
+    public TaskGroupService(TaskGroupRepository repository, UserRepository userRepository) {
         this.groupRepository = repository;
+        this.userRepository = userRepository;
     }
 
     public List<TaskGroupDTO> getGroups() {
@@ -29,6 +32,7 @@ public class TaskGroupService {
     public void addGroup(TaskGroupDTO groupDTO) {
         TaskGroup group = TaskGroup.builder()
                 .name(groupDTO.getName())
+                .appUser(userRepository.getReferenceById(groupDTO.getUserId()))
                 .build();
         groupRepository.save(group);
     }

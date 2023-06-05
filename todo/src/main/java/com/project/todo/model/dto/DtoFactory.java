@@ -1,5 +1,6 @@
 package com.project.todo.model.dto;
 
+import com.project.todo.model.AppUser;
 import com.project.todo.model.Task;
 import com.project.todo.model.TaskGroup;
 
@@ -24,8 +25,18 @@ public class DtoFactory {
         return TaskGroupDTO.builder()
                 .id(taskGroup.getId())
                 .name(taskGroup.getName())
+                .userId(taskGroup.getAppUser().getId())
                 .taskIds(taskGroup.getTasks().stream()
                         .map(Task::getId).collect(Collectors.toSet()))
+                .build();
+    }
+
+    public static UserDTO buildDTO(AppUser user) {
+        return UserDTO.builder()
+                .id(user.getId())
+                .userName(user.getUserName())
+                .groupIds(user.getGroups().stream()
+                        .map(TaskGroup::getId).collect(Collectors.toSet()))
                 .build();
     }
 }

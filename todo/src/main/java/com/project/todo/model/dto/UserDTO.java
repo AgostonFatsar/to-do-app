@@ -10,10 +10,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Data
-public class TaskGroupDTO {
+public class UserDTO {
 
-    private Long id;
-    private String name;
-    private Long userId;
-    private Set<Long> taskIds;
+    Long id;
+    String userName;
+    String password;
+    Set<Long> groupIds;
 }
