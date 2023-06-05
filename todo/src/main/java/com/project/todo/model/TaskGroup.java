@@ -17,6 +17,8 @@ public class TaskGroup {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "group")
+    @ManyToOne
+    private AppUser appUser;
+    @OneToMany(mappedBy = "group", cascade = CascadeType.REMOVE)
     private Set<Task> tasks;
 }

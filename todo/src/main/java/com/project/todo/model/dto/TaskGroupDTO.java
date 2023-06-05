@@ -14,5 +14,6 @@ public class TaskGroupDTO {
 
     private Long id;
     private String name;
+    private Long userId;
     private Set<Long> taskIds;
 }
