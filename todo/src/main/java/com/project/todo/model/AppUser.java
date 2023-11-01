@@ -19,6 +19,7 @@ public class AppUser {
     Long id;
     String userName;
     String password;
+    Role role;
     @OneToMany(mappedBy = "appUser", cascade = CascadeType.REMOVE)
     Set<TaskGroup> groups;
 }
