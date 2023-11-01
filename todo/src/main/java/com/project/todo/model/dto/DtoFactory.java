@@ -34,7 +34,7 @@ public class DtoFactory {
     public static UserDTO buildDTO(AppUser user) {
         return UserDTO.builder()
                 .id(user.getId())
-                .userName(user.getUserName())
+                .username(user.getUsername())
                 .groupIds(user.getGroups().stream()
                         .map(TaskGroup::getId).collect(Collectors.toSet()))
                 .build();
