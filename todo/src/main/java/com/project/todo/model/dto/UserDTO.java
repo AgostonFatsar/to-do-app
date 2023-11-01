@@ -13,7 +13,7 @@ import java.util.Set;
 public class UserDTO {
 
     Long id;
-    String userName;
+    String username;
     String password;
     Set<Long> groupIds;
 }

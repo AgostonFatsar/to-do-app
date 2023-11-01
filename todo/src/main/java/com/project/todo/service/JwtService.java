@@ -48,7 +48,7 @@ public class JwtService {
     private String generateToken(AppUser user) {
         List<String> roles = List.of(user.getRole().name());
         return JWT.create()
-                .withSubject(user.getUserName())
+                .withSubject(user.getUsername())
                 .withClaim("role", roles)
                 .sign(Algorithm.HMAC256(secretKey));
     }

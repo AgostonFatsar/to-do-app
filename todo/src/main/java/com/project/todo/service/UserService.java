@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService {
 
     public void addUser(UserDTO userDto) {
         AppUser user = AppUser.builder()
-                .userName(userDto.getUserName())
+                .username(userDto.getUsername())
                 .password(userDto.getPassword())
                 .role(Role.USER)
                 .build();
@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
 
     public void updateUser(Long id, UserDTO userDto) {
         AppUser user = repository.getReferenceById(id);
-        user.setUserName(userDto.getUserName());
+        user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         repository.save(user);
     }
@@ -58,9 +58,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser user = repository.findAppUserByUserName(username)
+        AppUser user = repository.findAppUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
+        //TODO add authorities
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        return new User(user.getUserName(), user.getPassword(), authorities);
+        return new User(user.getUsername(), user.getPassword(), authorities);
     }
 }

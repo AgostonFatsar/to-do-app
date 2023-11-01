@@ -2,7 +2,6 @@ package com.project.todo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import java.util.Set;
 
@@ -17,9 +16,11 @@ public class AppUser {
     @Id
     @GeneratedValue
     Long id;
-    String userName;
+    @Column(unique = true, nullable = false)
+    String username;
     String password;
     Role role;
     @OneToMany(mappedBy = "appUser", cascade = CascadeType.REMOVE)
     Set<TaskGroup> groups;
+    //TODO add default group
 }

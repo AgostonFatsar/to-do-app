@@ -24,7 +24,7 @@ public class AuthenticationService {
 
     public Cookie register(UserDTO userDTO) {
         AppUser user = AppUser.builder()
-                .userName(userDTO.getUserName())
+                .username(userDTO.getUsername())
                 .password(passwordEncoder.encode(userDTO.getPassword()))
                 .role(Role.USER)
                 .build();
@@ -36,11 +36,12 @@ public class AuthenticationService {
     public Cookie authenticate(UserDTO userDTO) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        userDTO.getUserName(),
+                        userDTO.getUsername(),
                         userDTO.getPassword()
                 )
         );
-        AppUser user = repository.findAppUserByUserName(userDTO.getUserName())
+        //TODO add specific exception
+        AppUser user = repository.findAppUserByUsername(userDTO.getUsername())
                 .orElseThrow();
         return jwtService.getAuthCookie(user);
     }
